@@ -1,1 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<title>Tummurugoti Sowmya Sri | Portfolio</title>
+<meta name="description" content="Portfolio of Tummurugoti Sowmya Sri, Electrical and Electronics Engineering student.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#080b14;--bg2:#0d1220;--panel:rgba(15,21,35,.78);--panel2:#111a2a;
+ --line:rgba(202,177,190,.16);--text:#f7f1ef;--muted:#b8b1bd;
+ --peach:#ffb58e;--orange:#ff875f;--pink:#eaa2b5;--violet:#8d8bd2;
+ --cyan:#8eb9d4;--shadow:0 24px 70px rgba(0,0,0,.36);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:transparent;color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+body.locked{overflow:hidden}a{color:inherit;text-decoration:none}button{font:inherit}
+#ambient{position:fixed;inset:0;z-index:-3;pointer-events:none;background:
+ radial-gradient(ellipse at 80% 12%,rgba(255,135,95,.14),transparent 34%),
+ radial-gradient(ellipse at 12% 55%,rgba(117,117,183,.13),transparent 36%),
+ radial-gradient(ellipse at 70% 85%,rgba(225,150,171,.09),transparent 32%),
+ linear-gradient(145deg,#070a12 0%,#0b1020 48%,#080b14 100%)}
+#ambient:before{content:"";position:absolute;inset:0;opacity:.2;background-image:linear-gradient(rgba(177,174,205,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(177,174,205,.07) 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.noise{position:fixed;inset:0;z-index:10;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;margin:0;letter-spacing:-.035em}p{line-height:1.8;color:var(--muted)}
+.section{width:min(1160px,calc(100% - 44px));margin:0 auto;padding:112px 0 20px;position:relative}
+.section-kicker{color:var(--peach);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;margin-bottom:14px}
+.section-title{font-size:clamp(2rem,5vw,3.3rem);font-weight:800}
+.section-sub{margin:12px 0 36px;max-width:680px}
+.gradient-text{background:linear-gradient(100deg,var(--peach),var(--pink),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.topbar{position:fixed;z-index:30;top:0;left:0;right:0;padding:16px 0;backdrop-filter:blur(18px);background:rgba(7,10,18,.64);border-bottom:1px solid transparent;transition:.3s}
+.topbar.scrolled{border-color:var(--line);padding:11px 0}
+.nav{width:min(1160px,calc(100% - 44px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:Manrope;font-weight:800;letter-spacing:.05em;font-size:.9rem}.brand span{color:var(--peach)}
+.navlinks{display:flex;gap:20px;align-items:center}.navlinks a{font-size:.8rem;color:#c9c3ce;transition:.2s}.navlinks a:hover{color:var(--peach)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 11px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:999px;border:1px solid rgba(255,190,160,.4);background:linear-gradient(110deg,rgba(255,153,112,.19),rgba(226,157,182,.12));color:#fff;font-weight:700;cursor:pointer;transition:transform .25s,box-shadow .25s,border .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,143,111,.18);border-color:var(--peach)}
+.btn.primary{background:linear-gradient(110deg,#f59b77,#d99aab);color:#1b1420;border:0}
+#intro{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at 72% 42%,rgba(198,128,142,.18),transparent 32%),radial-gradient(ellipse at 8% 80%,rgba(255,145,100,.13),transparent 35%),linear-gradient(120deg,#070a12,#101526 65%,#090d18);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:clamp(28px,7vw,100px);transition:opacity .8s,visibility .8s}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-copy{max-width:620px;position:relative;z-index:2}.intro-eyebrow{letter-spacing:.25em;text-transform:uppercase;color:var(--peach);font-size:.72rem;font-weight:700}
+.intro-copy h1{font-size:clamp(2.5rem,6vw,5.2rem);line-height:1.02;margin:20px 0}.intro-copy p{max-width:460px;font-size:1.05rem}
+.intro-visual{height:min(78vh,700px);min-height:400px;position:relative;display:grid;place-items:center}
+#figureCanvas{width:100%;height:100%;display:block}
+.intro-orbit{position:absolute;width:min(34vw,390px);aspect-ratio:1;border:1px solid rgba(255,183,157,.17);border-radius:50%;box-shadow:0 0 75px rgba(233,145,153,.08),inset 0 0 50px rgba(135,130,195,.07);animation:orbit 18s linear infinite}
+.intro-orbit:before,.intro-orbit:after{content:"";position:absolute;border:1px solid rgba(145,159,204,.13);border-radius:50%;inset:12%;transform:rotateX(68deg)}
+.intro-orbit:after{inset:25%;transform:rotateY(70deg)}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.intro-note{font-size:.78rem;color:#aaa4b2;margin-top:20px;letter-spacing:.05em}
+main{opacity:0;transition:opacity .8s}main.ready{opacity:1}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;overflow:hidden}
+.hero:after{content:"";position:absolute;width:520px;height:520px;right:-120px;top:18%;background:radial-gradient(circle,rgba(230,147,145,.13),transparent 68%);filter:blur(8px);pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:45px;width:100%}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.04;max-width:850px}
+.hero .lead{font-size:clamp(1rem,1.7vw,1.2rem);max-width:670px;margin:24px 0 30px}
+.hero-mark{height:350px;display:grid;place-items:center;position:relative}
+.hero-mark .halo{width:270px;height:270px;border-radius:50%;background:radial-gradient(circle,rgba(255,164,132,.18),rgba(140,129,188,.08) 52%,transparent 70%);border:1px solid rgba(255,190,160,.17);box-shadow:0 0 100px rgba(229,148,151,.12);animation:pulse 5s ease-in-out infinite}
+.hero-mark .orbitline{position:absolute;width:310px;height:120px;border:1px solid rgba(255,183,157,.28);border-radius:50%;transform:rotate(-24deg);animation:orbit 20s linear infinite}
+.hero-mark .orb{position:absolute;width:17px;height:17px;border-radius:50%;background:var(--peach);box-shadow:0 0 30px var(--orange);top:74px;right:85px}
+@keyframes pulse{50%{transform:scale(1.06);filter:brightness(1.2)}}
+.hero-mark .monogram{position:absolute;font:800 4rem Manrope;color:rgba(255,221,205,.85);text-shadow:0 0 50px rgba(255,149,123,.35)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.pill{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:9px 13px;color:#d3cbd1;font-size:.78rem}
+.grid{display:grid;gap:18px}.about-grid{grid-template-columns:repeat(4,1fr)}
+.card{background:linear-gradient(145deg,rgba(20,28,44,.86),rgba(11,16,28,.8));border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s,border-color .35s}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0,rgba(255,168,139,.09),transparent 55%);pointer-events:none}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,181,142,.4)}
+.card h3{font-size:1.08rem;margin-bottom:12px}.card p{font-size:.9rem;margin:0;line-height:1.75}.card-icon{font-size:1.55rem;color:var(--peach);margin-bottom:17px}
+.about-copy{font-size:1rem;max-width:1000px;margin:22px 0 34px;line-height:1.95}
+.skills-grid{grid-template-columns:repeat(4,1fr)}
+.skill-card h3{color:var(--peach);font-size:1.02rem}.skill-card ul{list-style:none;padding:0;margin:16px 0 0}.skill-card li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.9rem;color:#d3ced5}.skill-card li:last-child{border:0}
+.project-grid{grid-template-columns:repeat(3,1fr)}.project-card{display:flex;flex-direction:column;min-height:280px}.project-card .project-number{font-size:.75rem;color:var(--peach);letter-spacing:.18em;margin-bottom:20px}.project-card p{flex:1;margin-bottom:25px}
+.intern-grid{grid-template-columns:repeat(3,1fr)}.intern-card .date{color:var(--peach);font-size:.78rem;letter-spacing:.06em;margin-bottom:12px}.intern-card h3{margin-bottom:6px}.intern-card h4{font-size:.85rem;color:#d2b8bc;margin-bottom:15px;font-weight:600}.intern-card ul{padding-left:18px;color:var(--muted);font-size:.88rem;line-height:1.8}
+.learning-grid{grid-template-columns:repeat(3,1fr)}.learning-card .tag{display:inline-block;margin-top:18px;color:var(--peach);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}.roll{font-size:.76rem;color:#a9a2b1;margin-top:13px;overflow-wrap:anywhere}
+.grow-grid{grid-template-columns:repeat(2,1fr)}.grow-card{display:flex;gap:18px;align-items:flex-start;padding:27px}.grow-icon{font-size:1.7rem;color:var(--peach);min-width:34px}.grow-card h3{font-size:1.12rem;margin:2px 0 9px}.grow-card p{font-size:.95rem}
+.contact-grid{grid-template-columns:repeat(2,1fr)}.contact-item{display:flex;gap:15px;align-items:center;min-width:0}.contact-icon{width:43px;height:43px;flex:0 0 43px;border-radius:14px;display:grid;place-items:center;background:rgba(255,174,143,.1);color:var(--peach);font-size:1.1rem}.contact-item small{display:block;color:#a9a1ae;margin-bottom:4px}.contact-item a,.contact-item span{overflow-wrap:anywhere}
+footer{width:min(1160px,calc(100% - 44px));margin:100px auto 0;padding:30px 0 45px;border-top:1px solid var(--line);text-align:center;color:#968e9d;font-size:.82rem}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+.modal{position:fixed;inset:0;background:rgba(3,5,11,.82);backdrop-filter:blur(14px);z-index:80;display:none;align-items:center;justify-content:center;padding:22px}.modal.open{display:flex}
+.modal-box{width:min(900px,100%);max-height:88vh;overflow:auto;background:linear-gradient(145deg,#151c2b,#0b101c);border:1px solid rgba(255,181,142,.25);border-radius:24px;padding:clamp(22px,4vw,42px);box-shadow:0 30px 100px #000}
+.modal-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:25px}.modal-head h2{font-size:clamp(1.5rem,4vw,2.4rem);max-width:760px}.close{background:rgba(255,255,255,.07);color:white;border:1px solid var(--line);width:40px;height:40px;border-radius:50%;cursor:pointer;flex:0 0 40px}
+.modal-content h3{color:var(--peach);font-size:.9rem;letter-spacing:.13em;margin:27px 0 10px}.modal-content p,.modal-content li{color:#c2bbc7;line-height:1.8}.modal-content ul{padding-left:22px}.tech-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:30px}.tech-tags span{padding:8px 13px;border-radius:999px;background:rgba(255,170,140,.1);border:1px solid rgba(255,170,140,.2);color:var(--peach);font-size:.78rem}
+.codebox{background:#080c15;border:1px solid var(--line);border-radius:14px;padding:18px;overflow:auto;color:#f1d2c6;font: .78rem/1.65 ui-monospace,SFMono-Regular,monospace;white-space:pre}
+@media(max-width:950px){.about-grid,.skills-grid{grid-template-columns:repeat(2,1fr)}.project-grid,.intern-grid,.learning-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr .65fr}.hero-mark .halo{width:210px;height:210px}}
+@media(max-width:680px){
+ .section{width:min(100% - 34px,560px);padding:82px 0 10px}.nav{width:calc(100% - 34px)}.nav-toggle{display:block}.navlinks{display:none;position:absolute;top:62px;left:17px;right:17px;background:#101625;border:1px solid var(--line);border-radius:16px;padding:18px;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}
+ #intro{grid-template-columns:1fr;padding:32px 25px;align-content:center}.intro-copy h1{font-size:3rem}.intro-visual{height:38vh;min-height:230px;grid-row:1}.intro-orbit{width:220px}.intro-copy{grid-row:2}.intro-copy p{font-size:.95rem}
+ .hero{min-height:90vh}.hero-inner{grid-template-columns:1fr;gap:0}.hero-mark{height:170px;grid-row:1}.hero-mark .halo{width:145px;height:145px}.hero-mark .orbitline{width:180px;height:70px}.hero-mark .monogram{font-size:2.5rem}.hero-mark .orb{top:22px;right:calc(50% - 75px)}
+ .about-grid,.skills-grid,.project-grid,.intern-grid,.learning-grid,.grow-grid,.contact-grid{grid-template-columns:1fr}.card{padding:23px}.grow-card{padding:22px}.section-sub{margin-bottom:25px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 
+<style id="immersive-3d-styles">
+#ambient{z-index:-5}
+#stars{z-index:-3}
+#immersiveWorld{position:fixed;inset:0;z-index:-4;pointer-events:none;overflow:hidden}
+#immersiveWorld canvas{display:block;width:100%;height:100%;opacity:.96}
+#immersiveWorld:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 20%,rgba(5,7,15,.35) 100%);pointer-events:none}
+body{isolation:isolate}
+.section,.topbar,#intro,.project-modal{transform-style:preserve-3d}
+.section{perspective:1200px}
+.section-title,.section-kicker{position:relative;transform:translateZ(24px)}
+.card,.project-card,.skill-card,.internship-card,.learning-card,.growth-card{
+ transform-style:preserve-3d;backface-visibility:hidden;
+ transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s
+}
+.card:hover,.project-card:hover,.skill-card:hover,.internship-card:hover,.learning-card:hover,.growth-card:hover{
+ transform:translateY(-8px) rotateX(2deg) rotateY(-2deg) translateZ(18px);
+ box-shadow:0 28px 80px rgba(255,139,103,.13),0 0 35px rgba(160,133,190,.08)
+}
+.section{animation:none}
+@media(prefers-reduced-motion:reduce){
+ #immersiveWorld{display:none}
+ *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+@media(max-width:700px){#immersiveWorld canvas{opacity:.72}}
+</style>
+
+
+<style id="journey-ui-style">
+#journeyHUD{position:fixed;right:26px;bottom:26px;z-index:40;display:flex;align-items:center;gap:12px;color:#f4d5c6;font:600 10px "DM Sans",sans-serif;letter-spacing:.18em;text-transform:uppercase;pointer-events:none;text-shadow:0 2px 18px #000}
+#journeyHUD .track{width:84px;height:2px;background:rgba(255,255,255,.18);overflow:hidden}
+#journeyHUD .fill{height:100%;width:0;background:linear-gradient(90deg,#ff9c78,#e7a5bd);box-shadow:0 0 12px #ff9c78}
+@media(max-width:700px){#journeyHUD{right:14px;bottom:14px;font-size:9px}#journeyHUD .track{width:48px}}
+</style>
+
+</head>
+<body class="locked">
+<div id="journeyHUD"><span id="journeyChapter">THE CITY</span><span class="track"><span class="fill" id="journeyFill"></span></span></div><div id="ambient"></div><div id="immersiveWorld" aria-hidden="true"><canvas id="journeyCanvas"></canvas></div><canvas id="stars"></canvas><div class="noise"></div>
+
+<section id="intro" aria-label="Portfolio welcome screen">
+ <div class="intro-copy">
+  <div class="intro-eyebrow">A personal engineering portfolio</div>
+  <h1>Curiosity today.<br><span class="gradient-text">Possibilities tomorrow.</span></h1>
+  <p>Welcome to my space of learning, exploration, and engineering.</p>
+  <button class="btn primary" id="enterBtn">Open Portfolio <span aria-hidden="true">↗️</span></button>
+  <div class="intro-note">TUMMURUGOTI SOWMYA SRI · ELECTRICAL & ELECTRONICS ENGINEERING</div>
+ </div>
+ <div class="intro-visual"><div class="intro-orbit"></div><canvas id="figureCanvas" aria-label="Animated abstract 3D character"></canvas></div>
+</section>
+
+<header class="topbar">
+ <nav class="nav">
+  <a class="brand" href="#home">SOWMYA<span>.</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+  <div class="navlinks" id="navlinks">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#internships">Internships</a><a href="#learning">Learning</a><a href="#growth">Growth</a><a href="#contact">Contact</a>
+  </div>
+ </nav>
+</header>
+
+<main id="main">
+<section class="section hero" id="home">
+ <div class="hero-inner">
+  <div class="reveal">
+   <div class="section-kicker">Electrical & Electronics Engineering Student</div>
+   <h1>TUMMURUGOTI<br><span class="gradient-text">SOWMYA SRI</span></h1>
+   <p class="lead">An enthusiastic student exploring emerging technologies, discovering innovative ideas, and shaping a future full of possibilities.</p>
+   <a class="btn primary" href="#about">Explore My Portfolio <span>↓</span></a>
+   <div class="hero-meta"><span class="pill">RVR & JC College of Engineering</span><span class="pill">B.Tech · EEE</span><span class="pill">2023–2027</span></div>
+  </div>
+  <div class="hero-mark reveal" aria-hidden="true"><div class="halo"></div><div class="orbitline"></div><div class="orb"></div><div class="monogram">SS</div></div>
+ </div>
+</section>
+
+<section class="section" id="about">
+ <div class="reveal"><div class="section-kicker">A little about me</div><h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+ <p class="about-copy">I am a Bachelor of Technology student specializing in Electrical and Electronics Engineering at RVR & JC College of Engineering. Through my academic studies and practical experiences, I have developed a foundation in electrical circuits, electrical machines, power electronics, battery monitoring systems, Arduino-based control, solar photovoltaic (PV) system design, and electric vehicle technologies.<br><br>I am passionate about exploring emerging technologies and understanding how electrical engineering can contribute to energy efficiency, innovation, and sustainable transportation. I continuously strive to expand my technical knowledge, strengthen my practical skills, and apply what I learn to real-world engineering challenges.</p></div>
+ <div class="grid about-grid">
+  <article class="card reveal"><div class="card-icon">✦</div><h3>Academic Background</h3><p>B.Tech in Electrical and Electronics Engineering<br>RVR & JC College of Engineering<br>2023–2027<br>CGPA: 8.12</p></article>
+  <article class="card reveal"><div class="card-icon">⌁</div><h3>Technical Interests</h3><p>Electrical systems, electric mobility, battery monitoring, renewable energy and embedded technologies.</p></article>
+  <article class="card reveal"><div class="card-icon">◇</div><h3>Project Experience</h3><p>Battery monitoring simulation and Arduino 7-segment display counter.</p></article>
+  <article class="card reveal"><div class="card-icon">✧</div><h3>Engineering Learning</h3><p>Completed internships in Solar PV Design and Electric Vehicle (EV) Technologies, along with NPTEL courses in Smart Grid and Internet of Things (IoT). These learning experiences have strengthened my understanding of emerging engineering technologies and their real-world applications.</p></article>
+ </div>
+</section>
+
+<section class="section" id="skills">
+ <div class="reveal"><div class="section-kicker">What I work with</div><h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2><p class="section-sub">A growing toolkit built through coursework, projects, and hands-on learning.</p></div>
+ <div class="grid skills-grid">
+  <article class="card skill-card reveal"><h3>Electrical</h3><ul><li>Circuit Analysis</li><li>Electrical Machines</li><li>Basic Power Electronics</li></ul></article>
+  <article class="card skill-card reveal"><h3>Programming</h3><ul><li>Basic C/C++</li></ul></article>
+  <article class="card skill-card reveal"><h3>Tools</h3><ul><li>MATLAB</li><li>Simulink</li><li>Simscape</li><li>MS Excel</li><li>PowerPoint</li></ul></article>
+  <article class="card skill-card reveal"><h3>Embedded</h3><ul><li>Arduino</li><li>Arduino IDE</li></ul></article>
+ </div>
+</section>
+
+<section class="section" id="projects">
+ <div class="reveal"><div class="section-kicker">Selected work</div><h2 class="section-title">Projects</h2><p class="section-sub">Hands-on Work</p></div>
+ <div class="grid project-grid">
+  <article class="card project-card reveal"><div class="project-number">PROJECT 01</div><h3>Real-Time Battery Voltage and Current Monitoring Using MATLAB Simulink/Simscape</h3><p>A simulation-based project focused on observing battery voltage and current under a resistive load.</p><button class="btn view-project" data-project="battery">View Project ↗️</button></article>
+  <article class="card project-card reveal"><div class="project-number">PROJECT 02</div><h3>7-Segment LED Display (0–8 Counter) Using Arduino</h3><p>An embedded-systems project that uses an Arduino to drive a 7-segment LED display and count from 0 to 8.</p><button class="btn view-project" data-project="arduino">View Project ↗️</button></article>
+  <article class="card project-card reveal"><div class="project-number">PROJECT 03</div><h3>Electric Bike Design Challenge (EBDC)</h3><p>Contributed to electrical testing and evaluation activities as the Electrical Testing Lead for a student-developed electric motorcycle.</p><button class="btn view-project" data-project="ebdc">View Project ↗️</button></article>
+ </div>
+</section>
+
+<section class="section" id="internships">
+ <div class="reveal"><div class="section-kicker">Industry exposure</div><h2 class="section-title">Internships</h2><p class="section-sub">Learning through practical exposure and technical exploration.</p></div>
+ <div class="grid intern-grid">
+  <article class="card intern-card reveal"><div class="date">MAY 2025</div><h3>SkillDzire</h3><h4>Solar PV System Design</h4><ul><li>Designed small-scale solar PV systems using load calculations to support inverter selection and system configuration.</li><li>Conducted site assessments and estimated panel capacity for project planning.</li></ul></article>
+  <article class="card intern-card reveal"><div class="date">APRIL–JUNE 2026</div><h3>Orvinar Tech</h3><h4>Electric Vehicles</h4><ul><li>Developed an understanding of electric-vehicle architecture, battery management systems, and hybrid-vehicle concepts.</li><li>Studied electric motors, controllers, power electronics, and energy-storage systems.</li><li>Explored EV charging systems, regenerative braking, and energy-efficiency techniques.</li></ul></article>
+  <article class="card intern-card reveal"><div class="date">MAY 2026 – JUNE 2026 · 6 WEEKS</div><h3>Codtech IT Solutions Private Limited</h3><h4>VLSI Design Internship</h4><ul><li>Completed a six-week internship focused on the VLSI domain, developing technical awareness of semiconductor design and integrated circuit technologies.</li><li>This experience broadened my engineering knowledge and supported my professional development as an Electrical and Electronics Engineering student.</li></ul></article>
+ </div>
+</section>
+
+<section class="section" id="learning">
+ <div class="reveal"><div class="section-kicker">Always learning</div><h2 class="section-title">Continuous <span class="gradient-text">Learning</span></h2><p class="section-sub">Courses and technical training that support my engineering journey.</p></div>
+ <div class="grid learning-grid">
+  <article class="card learning-card reveal"><div class="card-icon">◎</div><h3>NPTEL: Smart Grid — Basics to Advanced Technologies</h3><p>Platform: NPTEL<br>January–April 2026</p><div class="roll">Roll No: NPTEL26EE84S550803169</div><span class="tag">NPTEL Course</span></article>
+  <article class="card learning-card reveal"><div class="card-icon">◎</div><h3>NPTEL: Introduction to Internet of Things</h3><p>Platform: NPTEL<br>January–April 2026</p><div class="roll">Roll No: NPTEL26CS37S1150803736</div><span class="tag">NPTEL Course</span></article>
+  <article class="card learning-card reveal"><div class="card-icon">✧</div><h3>Solar PV Unit Design, Installation and Maintenance</h3><p>Technical training conducted by HIEE Empowering Engineers Pvt. Ltd.</p><span class="tag">Technical Training</span></article>
+ </div>
+</section>
+
+<section class="section" id="growth">
+ <div class="reveal"><div class="section-kicker">Future direction</div><h2 class="section-title">Where I Want <span class="gradient-text">to Grow</span></h2><p class="section-sub">Areas I am interested in exploring and developing further.</p></div>
+ <div class="grid grow-grid">
+  <article class="card grow-card reveal"><div class="grow-icon">ϟ</div><div><h3>Core Electrical Engineering</h3><p>Circuits, machines and power electronics.</p></div></article>
+  <article class="card grow-card reveal"><div class="grow-icon">⌁</div><div><h3>Electric-Vehicle Technologies</h3><p>EV architecture, motors, controllers and charging.</p></div></article>
+  <article class="card grow-card reveal"><div class="grow-icon">▰</div><div><h3>Battery Monitoring Systems</h3><p>Voltage/current monitoring and BMS concepts.</p></div></article>
+  <article class="card grow-card reveal"><div class="grow-icon">☼</div><div><h3>Renewable Energy & Solar PV</h3><p>Load-based PV sizing and system configuration.</p></div></article>
+  <article class="card grow-card reveal"><div class="grow-icon">▦</div><div><h3>Embedded Systems</h3><p>Microcontroller programming with Arduino.</p></div></article>
+  <article class="card grow-card reveal"><div class="grow-icon">♧</div><div><h3>Energy-Efficient Technologies</h3><p>Efficient energy use in transport and power systems.</p></div></article>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="reveal"><div class="section-kicker">Let's connect</div><h2 class="section-title">Get in <span class="gradient-text">Touch</span></h2><p class="section-sub">Thank you for visiting my portfolio. I'm always open to learning, collaboration, and meaningful engineering conversations.</p></div>
+ <div class="grid contact-grid">
+  <article class="card contact-item reveal"><div class="contact-icon">✉</div><div><small>Email</small><a href="mailto:sowmyasri1256@gmail.com">sowmyasri1256@gmail.com</a></div></article>
+  <article class="card contact-item reveal"><div class="contact-icon">☎</div><div><small>Phone</small><a href="tel:+917075276923">+91 70752 76923</a></div></article>
+  <article class="card contact-item reveal"><div class="contact-icon">in</div><div><small>LinkedIn</small><a href="https://linkedin.com/in/sowmyasri12" target="_blank" rel="noopener">linkedin.com/in/sowmyasri12</a></div></article>
+  <article class="card contact-item reveal"><div class="contact-icon">⌘</div><div><small>GitHub</small><a href="https://github.com/sowmya-1217" target="_blank" rel="noopener">github.com/sowmya-1217</a></div></article>
+  <article class="card contact-item reveal"><div class="contact-icon">⌖</div><div><small>Location</small><span>Guntur, Andhra Pradesh, India</span></div></article>
+ </div>
+</section>
+<footer>Designed with curiosity and a passion for engineering.<br>©️ <span id="year"></span> Tummurugoti Sowmya Sri</footer>
+</main>
+
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-box"><div class="modal-head"><h2 id="modalTitle"></h2><button class="close" id="closeModal" aria-label="Close project details">×</button></div><div class="modal-content" id="modalContent"></div></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script>
+const intro=document.getElementById('intro'),main=document.getElementById('main');
+document.getElementById('enterBtn').addEventListener('click',()=>{intro.classList.add('hide');main.classList.add('ready');document.body.classList.remove('locked');setTimeout(()=>intro.remove(),900)});
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+window.addEventListener('scroll',()=>document.querySelector('.topbar').classList.toggle('scrolled',scrollY>30));
+document.getElementById('year').textContent=new Date().getFullYear();
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* Ambient starfield */
+const starCanvas=document.getElementById('stars'),sctx=starCanvas.getContext('2d');let stars=[];
+function resizeStars(){starCanvas.width=innerWidth*devicePixelRatio;starCanvas.height=innerHeight*devicePixelRatio;starCanvas.style.width=innerWidth+'px';starCanvas.style.height=innerHeight+'px';sctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);stars=Array.from({length:Math.min(130,Math.floor(innerWidth/8))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.3,a:Math.random()*.55+.12,s:Math.random()*.22+.04,phase:Math.random()*6.28}))}
+function drawStars(t){sctx.clearRect(0,0,innerWidth,innerHeight);stars.forEach(p=>{let alpha=p.a*(.65+.35*Math.sin(t*.001*p.s*8+p.phase));sctx.beginPath();sctx.arc(p.x,p.y,p.r,0,Math.PI*2);sctx.fillStyle=`rgba(255,190,174,${alpha})`;sctx.fill()});requestAnimationFrame(drawStars)}
+addEventListener('resize',resizeStars);resizeStars();requestAnimationFrame(drawStars);
+
+/* Procedural, stylized 3D standing character for the welcome screen */
+(function(){
+ const canvas=document.getElementById('figureCanvas');
+ if(!window.THREE){canvas.style.display='none';return}
+ const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(canvas.clientWidth,canvas.clientHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;
+ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(34,canvas.clientWidth/canvas.clientHeight,.1,100);camera.position.set(0,1.25,7.6);
+ scene.add(new THREE.HemisphereLight(0xc9d5ff,0x211526,2));
+ const key=new THREE.PointLight(0xffa783,42,20);key.position.set(3,4,4);scene.add(key);
+ const rim=new THREE.PointLight(0x9296d7,34,18);rim.position.set(-3,2,1);scene.add(rim);
+ const warm=new THREE.PointLight(0xffb7a2,18,12);warm.position.set(0,1,-3);scene.add(warm);
+ const mat=(color,metal=0,rough=.48)=>new THREE.MeshStandardMaterial({color,metalness:metal,roughness:rough});
+ const skin=mat(0xc98e78),hair=mat(0x171522),coat=mat(0x262c43,.12),top=mat(0xd99a91,.05),pants=mat(0x252b3b),shoe=mat(0x10131d),gold=mat(0xe8ad8c,.55,.28);
+ const group=new THREE.Group();scene.add(group);
+ function ball(parent,m,x,y,z,sx,sy,sz){let o=new THREE.Mesh(new THREE.SphereGeometry(1,28,20),m);o.position.set(x,y,z);o.scale.set(sx,sy,sz);parent.add(o);return o}
+ function limb(parent,m,a,b,r1,r2){let A=new THREE.Vector3(...a),B=new THREE.Vector3(...b),d=new THREE.Vector3().subVectors(B,A);let o=new THREE.Mesh(new THREE.CylinderGeometry(r2,r1,d.length(),18),m);o.position.copy(A).add(B).multiplyScalar(.5);o.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize());parent.add(o);return o}
+ // legs and shoes
+ limb(group,pants,[-.18,-.45,0],[-.22,-1.55,0],.14,.105);limb(group,pants,[.18,-.45,0],[.22,-1.55,0],.14,.105);
+ ball(group,shoe,-.22,-1.62,.11,.17,.09,.28);ball(group,shoe,.22,-1.62,.11,.17,.09,.28);
+ // torso, neck and head
+ ball(group,coat,0,.12,0,.48,.67,.25);ball(group,top,0,.25,.205,.32,.42,.075);
+ limb(group,skin,[0,.65,0],[0,.82,0],.105,.09);ball(group,skin,0,1.12,0,.31,.39,.28);
+ ball(group,hair,0,1.32,-.025,.33,.25,.3);ball(group,hair,-.27,1.13,0,.09,.25,.22);ball(group,hair,.27,1.13,0,.09,.25,.22);
+ // simple fringe
+ ball(group,hair,-.12,1.39,.19,.18,.12,.1);ball(group,hair,.1,1.4,.19,.19,.1,.1);
+ // arms and hands
+ limb(group,coat,[-.42,.48,0],[-.67,-.18,.02],.14,.105);limb(group,skin,[-.67,-.18,.02],[-.62,-.72,.12],.09,.065);ball(group,skin,-.62,-.78,.13,.075,.12,.07);
+ limb(group,coat,[.42,.48,0],[.67,-.12,.02],.14,.105);limb(group,skin,[.67,-.12,.02],[.59,-.62,.18],.09,.065);ball(group,skin,.59,-.68,.18,.075,.12,.07);
+ // tiny pendant detail
+ ball(group,gold,0,-.03,.29,.035,.07,.025);
+ group.position.y=-.02;
+ const floor=new THREE.Mesh(new THREE.CircleGeometry(1.3,48),new THREE.MeshBasicMaterial({color:0x9d7187,transparent:true,opacity:.12}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.72;scene.add(floor);
+ function render(t){group.position.y=-.02+Math.sin(t*.0015)*.045;group.rotation.y=Math.sin(t*.0007)*.12;group.rotation.z=Math.sin(t*.001)*.012;renderer.render(scene,camera);requestAnimationFrame(render)}requestAnimationFrame(render);
+ function fit(){let w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}addEventListener('resize',fit);
+})();
+
+const arduinoCode=`// 7-Segment Display Counter (0 to 8) using Arduino
+// Common-cathode display: segments A-G on pins 2-8 through 220 ohm resistors, common pin to GND
+
+// Pin mappings for segments A through G
+const int segmentPins[] = {2, 3, 4, 5, 6, 7, 8};
+// Binary truth table mapping for numbers 0 to 8 (1 = Segment ON, 0 = Segment OFF)
+const byte numPatterns[9] = {
+  0b00111111, // 0
+  0b00000110, // 1
+  0b01011011, // 2
+  0b01001111, // 3
+  0b01100110, // 4
+  0b01101101, // 5
+  0b01111101, // 6
+  0b00000111, // 7
+  0b01111111  // 8
+};
+void setup() {
+  // Set all segment pins as OUTPUT
+  for (int i = 0; i < 7; i++) {
+    pinMode(segmentPins[i], OUTPUT);
+  }
+}
+void loop() {
+  // Cycle through numbers 0 to 8
+  for (int digit = 0; digit <= 8; digit++) {
+    displayNumber(digit);
+    delay(1000); // Hold the number on the screen for 1 second
+  }
+}
+// Helper function to handle segment states
+void displayNumber(int num) {
+  byte pattern = numPatterns[num];
+  for (int i = 0; i < 7; i++) {
+    // Check the bit state for each segment
+    int bitState = bitRead(pattern, i);
+    digitalWrite(segmentPins[i], bitState);
+  }
+}`;
+const projectData={
+ battery:{title:'Real-Time Battery Voltage and Current Monitoring Using MATLAB Simulink/Simscape',html:`
+ <h3>PROJECT OVERVIEW</h3><p>A simulation-based project focused on observing battery voltage and current under a resistive load.</p>
+ <h3>DOCUMENTED WORK</h3><ul><li>Integrated voltage and current measurement blocks with a resistive load.</li><li>Used Scope blocks to observe and analyze voltage and current waveforms.</li><li>Studied variations in battery operating parameters under load conditions.</li><li>Developed practical understanding of battery monitoring and simulation.</li></ul>
+ <h3>APPLICATIONS</h3><ul><li>Electric vehicle battery monitoring concepts.</li><li>Battery-powered electronic systems.</li><li>Electrical circuit analysis and simulation.</li><li>Introduction to battery management system (BMS) concepts.</li></ul>
+ <h3>OUTCOME</h3><p>The project demonstrates the use of MATLAB Simulink/Simscape to model an electrical circuit and monitor voltage and current through simulation. It strengthens understanding of electrical measurements, circuit modeling, and simulation-based analysis relevant to electric mobility.</p>
+ <h3>FUTURE SCOPE</h3><p>The model can be extended by incorporating battery state-of-charge estimation, temperature monitoring, changing load conditions, overvoltage and undervoltage alerts, and additional battery management system features.</p>
+ <div class="tech-tags"><span>MATLAB</span><span>Simulink</span><span>Simscape</span></div>`},
+ arduino:{title:'7-Segment LED Display (0–8 Counter) Using Arduino',html:`
+ <h3>DOCUMENTED WORK</h3><ul><li>Built the circuit using a 7-segment LED display, 220 Ω resistors, jumper wires, and a breadboard.</li><li>Programmed the Arduino board using Arduino IDE and basic C/C++ concepts, storing the segment pattern for each digit in a lookup table.</li><li>Displayed digits 0 to 8 in sequence using digital output control and a one-second delay between digits.</li></ul>
+ <h3>IMPLEMENTATION</h3><p>Segments A to G of a common-cathode 7-segment display are connected to Arduino digital pins 2 to 8 through 220 Ω current-limiting resistors, with the common pin connected to ground. The program is written in the Arduino IDE, compiled, and uploaded to the board using a USB connection. Each digit from 0 to 8 is shown for one second, and the count then repeats continuously. The display is observed to verify that every segment is controlled correctly.</p>
+ <h3>APPLICATIONS</h3><ul><li>Digital counters, scoreboards and numeric indicators.</li><li>Introduction to embedded systems.</li><li>Learning digital input/output control.</li><li>Foundations for automation and microcontroller-based projects.</li></ul>
+ <h3>OUTCOME</h3><p>The project demonstrates how an Arduino can control a 7-segment LED display using a simple program. It builds foundational skills in microcontroller programming, digital electronics, circuit connections, and hardware-software integration.</p>
+ <h3>ARDUINO SOURCE CODE</h3><div class="codebox" id="arduinoCode"></div>
+ <div class="tech-tags"><span>Arduino</span><span>Arduino IDE</span><span>C/C++</span></div>`},
+ ebdc:{title:'Electric Bike Design Challenge (EBDC)',html:`
+ <h3>ROLE</h3><p>Electrical Testing Lead</p>
+ <h3>PROJECT OVERVIEW</h3><p>Participated in the Electric Bike Design Challenge (EBDC) as the Electrical Testing Lead, contributing to the electrical testing and evaluation activities of a student-developed electric motorcycle. The role involved supporting the verification of electrical systems, understanding key electrical components, and contributing to vehicle performance and safety assessments as part of a multidisciplinary engineering team.</p>
+ <h3>ROLE & RESPONSIBILITIES</h3><ul><li>Served as Electrical Testing Lead during participation in EBDC.</li><li>Contributed to electrical system testing and verification activities for the electric motorcycle.</li><li>Focused on understanding and evaluating battery, motor, controller, and associated electrical systems.</li><li>Supported checks related to electrical connections, system functionality, and operational safety.</li><li>Collaborated with team members to identify potential electrical issues and support troubleshooting.</li><li>Contributed to the team's preparation for technical evaluation and competition requirements.</li></ul>
+ <h3>KEY LEARNING OUTCOMES</h3><ul><li>Developed practical understanding of electric motorcycle electrical architecture.</li><li>Gained exposure to electrical testing procedures and EV system integration.</li><li>Strengthened teamwork, technical coordination, and problem-solving skills.</li><li>Improved understanding of electrical safety considerations in electric vehicles.</li></ul>`}
+};
+document.querySelectorAll('.view-project').forEach(btn=>btn.addEventListener('click',()=>{const data=projectData[btn.dataset.project];document.getElementById('modalTitle').textContent=data.title;document.getElementById('modalContent').innerHTML=data.html;if(btn.dataset.project==='arduino')document.getElementById('arduinoCode').textContent=arduinoCode;document.getElementById('projectModal').classList.add('open');document.body.classList.add('locked')}));
+function closeProject(){document.getElementById('projectModal').classList.remove('open');document.body.classList.remove('locked')}
+document.getElementById('closeModal').addEventListener('click',closeProject);
+document.getElementById('projectModal').addEventListener('click',e=>{if(e.target.id==='projectModal')closeProject()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProject()});
+</script>
+
+<script id="immersive-3d-journey">
+(() => {
+  const canvas = document.getElementById('journeyCanvas');
+  if (!canvas || !window.THREE || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const THREE = window.THREE;
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true, powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.65));
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.18;
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x080b14, 0.026);
+  const camera = new THREE.PerspectiveCamera(52, innerWidth/innerHeight, .1, 180);
+  camera.position.set(0, 0, 18);
+
+  scene.add(new THREE.AmbientLight(0x8990c8, 1.0));
+  const peachLight = new THREE.PointLight(0xff956f, 105, 65); peachLight.position.set(-7,5,8); scene.add(peachLight);
+  const roseLight = new THREE.PointLight(0xe9a0bd, 85, 60); roseLight.position.set(7,-3,-10); scene.add(roseLight);
+  const blueLight = new THREE.PointLight(0x777bd0, 95, 70); blueLight.position.set(0,7,-28); scene.add(blueLight);
+
+  const journey = new THREE.Group(); scene.add(journey);
+  const clusters = [];
+  const mat = (color, roughness=.35, metalness=.55, emissive=color, intensity=.28) =>
+    new THREE.MeshStandardMaterial({color, roughness, metalness, emissive, emissiveIntensity:intensity});
+  const peach = mat(0xffa27d,.24,.72,0xff754f,.48);
+  const pink = mat(0xd99bb6,.28,.62,0x9d527e,.4);
+  const violet = mat(0x8588ce,.3,.7,0x5358bb,.45);
+  const dark = mat(0x242b48,.28,.8,0x111a3b,.18);
+  const glass = new THREE.MeshPhysicalMaterial({color:0x9a9bd2,metalness:.4,roughness:.12,transparent:true,opacity:.28,transmission:.35,thickness:1});
+  const add = (parent, geo, material, pos, scale) => {
+    const m = new THREE.Mesh(geo, material);
+    m.position.set(...pos); if(scale)m.scale.set(...scale); parent.add(m); return m;
+  };
+
+  // Each chapter is a 3D environment encountered as the visitor scrolls.
+
+  const makeChapter = (z, kind) => {
+    const g = new THREE.Group(); g.position.z = z; journey.add(g); clusters.push(g);
+    const add = (parent, geo, material, pos, scale) => {
+      const m = new THREE.Mesh(geo, material);
+      m.position.set(...pos); if(scale)m.scale.set(...scale); parent.add(m); return m;
+    };
+    const buildingMats = [
+      new THREE.MeshStandardMaterial({color:0x343047,roughness:.88}),
+      new THREE.MeshStandardMaterial({color:0x514052,roughness:.9}),
+      new THREE.MeshStandardMaterial({color:0x30364a,roughness:.9}),
+      new THREE.MeshStandardMaterial({color:0x6a4a4a,roughness:.88})
+    ];
+    const windowMat = new THREE.MeshBasicMaterial({color:0xffc39d});
+    const roadMat = new THREE.MeshStandardMaterial({color:0x171a28,roughness:.95});
+    const metalMat = new THREE.MeshStandardMaterial({color:0x252b3b,metalness:.75,roughness:.3});
+    const lightMat = new THREE.MeshBasicMaterial({color:0xffa37f});
+    const cloudMat = new THREE.MeshStandardMaterial({color:0xffd5c4,roughness:1,transparent:true,opacity:.88});
+    const ground = add(g,new THREE.PlaneGeometry(46,100),roadMat,[0,-3.8,-10]);
+    ground.rotation.x=-Math.PI/2;
+
+    if(kind===0 || kind===1){
+      // Paris-inspired street canyon: Haussmann-style façades, mansard roofs, balconies and warm windows.
+      const road=add(g,new THREE.PlaneGeometry(13,100),new THREE.MeshStandardMaterial({color:0x252432,roughness:.98}),[0,-3.72,-18]);
+      road.rotation.x=-Math.PI/2;
+      for(let side of [-1,1]){
+        for(let i=0;i<8;i++){
+          const zpos=8-i*6.2, h=7+(i%3)*1.5, w=3.1+(i%2)*.45, x=side*(8.2+(i%2)*.35);
+          add(g,new THREE.BoxGeometry(w,h,4.9),buildingMats[(i+(side===1?1:0))%4],[x,-3.8+h/2,zpos]);
+          add(g,new THREE.BoxGeometry(w+.18,.3,5.05),buildingMats[1],[x,-3.8+h+.08,zpos]);
+          // Mansard roof silhouette and dormers
+          const roof=add(g,new THREE.ConeGeometry(w*.78,1.45,4),buildingMats[3],[x,-3.8+h+.75,zpos]);roof.rotation.y=Math.PI/4;
+          for(let row=0;row<3;row++)for(let col=0;col<3;col++){
+            const wx=x+(col-1)*.82, wy=-3.8+1.25+row*1.45;
+            add(g,new THREE.BoxGeometry(.42,.66,.045),windowMat,[wx,wy,zpos+2.48]);
+            add(g,new THREE.BoxGeometry(.58,.08,.12),metalMat,[wx,wy-.39,zpos+2.52]);
+          }
+          // Balconies
+          for(let row=1;row<3;row++){
+            const balcony=add(g,new THREE.BoxGeometry(w*.94,.07,.55),metalMat,[x,-3.8+row*1.45+.42,zpos+2.62]);
+            for(let rail=0;rail<7;rail++)add(g,new THREE.CylinderGeometry(.018,.018,.35,6),metalMat,[x-w*.42+rail*w*.14,-3.8+row*1.45+.6,zpos+2.83]);
+          }
+        }
+        // Paris street lamps and trees
+        for(let i=0;i<5;i++){
+          const zz=5-i*10, xx=side*(5.2+(i%2)*.5);
+          add(g,new THREE.CylinderGeometry(.045,.075,3.1,10),metalMat,[xx,-2.25,zz]);
+          add(g,new THREE.SphereGeometry(.22,14,14),lightMat,[xx,-.62,zz]);
+          add(g,new THREE.ConeGeometry(.95,2.2,9),new THREE.MeshStandardMaterial({color:0x293a37,roughness:1}),[side*6.7,-1.45,zz-1]);
+        }
+      }
+      // Road markings and distant vanishing-point glow
+      for(let i=0;i<11;i++)add(g,new THREE.BoxGeometry(.12,.018,1.6),new THREE.MeshBasicMaterial({color:0xd8b8a1,transparent:true,opacity:.55}),[0,-3.68,8-i*7]);
+      const horizon=add(g,new THREE.SphereGeometry(2.2,24,24),new THREE.MeshBasicMaterial({color:0xffa77f,transparent:true,opacity:.18}),[0,1.8,-43]);horizon.scale.set(2.6,1.1,.2);
+    }
+
+    if(kind===1 || kind===2){
+      // Scooter and rider moving down the Paris street; built as a coherent silhouette.
+      const scooter=new THREE.Group();g.add(scooter);scooter.position.set(.1,-2.75,1.2);scooter.rotation.y=-.05;
+      const wheelMat=new THREE.MeshStandardMaterial({color:0x10131e,metalness:.35,roughness:.72});
+      [-1.05,1.05].forEach(x=>{
+        const wheel=add(scooter,new THREE.TorusGeometry(.43,.13,16,48),wheelMat,[x,-.55,0]);wheel.rotation.y=Math.PI/2;
+        const hub=add(scooter,new THREE.CylinderGeometry(.16,.16,.22,20),peach,[x,-.55,0]);hub.rotation.z=Math.PI/2;
+      });
+      add(scooter,new THREE.BoxGeometry(2.35,.18,.48),metalMat,[0,-.48,0]);
+      add(scooter,new THREE.BoxGeometry(.72,.75,.42),peach,[.12,-.08,.03]);
+      add(scooter,new THREE.CylinderGeometry(.07,.07,.82,12),metalMat,[-.55,.24,0]).rotation.z=-.38;
+      add(scooter,new THREE.BoxGeometry(.85,.09,.12),metalMat,[-.62,.63,0]);
+      add(scooter,new THREE.BoxGeometry(.28,.12,.18),lightMat,[1.02,-.02,.08]);
+      // Rider body, head, arms and legs
+      const riderMat=new THREE.MeshStandardMaterial({color:0x242638,roughness:.8});
+      const skin=new THREE.MeshStandardMaterial({color:0xc98f78,roughness:.9});
+      add(scooter,new THREE.SphereGeometry(.28,20,20),skin,[-.1,1.23,0]);
+      const helmet=add(scooter,new THREE.SphereGeometry(.34,20,20),pink,[-.1,1.35,-.02]);helmet.scale.set(1.12,.8,1);
+      add(scooter,new THREE.CapsuleGeometry(.28,.72,5,10),riderMat,[-.08,.55,0],[1,1,1]).rotation.z=-.23;
+      const arm1=add(scooter,new THREE.CylinderGeometry(.075,.09,.86,10),skin,[-.48,.55,0]);arm1.rotation.z=-.95;
+      const arm2=add(scooter,new THREE.CylinderGeometry(.075,.09,.86,10),skin,[.28,.55,0]);arm2.rotation.z=-.65;
+      add(scooter,new THREE.CylinderGeometry(.11,.13,.95,10),riderMat,[-.45,-.25,.02]).rotation.z=-1.05;
+      add(scooter,new THREE.CylinderGeometry(.11,.13,.95,10),riderMat,[.35,-.25,.02]).rotation.z=-.75;
+      scooter.userData.isScooter=true;
+      // Speed streaks
+      for(let i=0;i<18;i++){
+        const streak=add(g,new THREE.BoxGeometry(.025,.025,1.5+(i%3)),new THREE.MeshBasicMaterial({color:i%2?0xeaa2b5:0xffa17d,transparent:true,opacity:.38}),[(Math.random()-.5)*15,(Math.random()-.5)*5,-i*2]);
+        streak.userData.streak=i;
+      }
+    }
+
+    if(kind===2 || kind===3 || kind===4){
+      // Open sky and layered clouds for the skydiving chapter.
+      const sky=add(g,new THREE.SphereGeometry(46,32,24),new THREE.MeshBasicMaterial({color:0x5b527c,side:THREE.BackSide}),[0,0,-16]);
+      sky.material.color.setHSL(.68,.23,.22);
+      for(let i=0;i<32;i++){
+        const x=(Math.random()-.5)*32,y=(Math.random()-.5)*15,z=-5-Math.random()*48;
+        const cloud=new THREE.Group();g.add(cloud);cloud.position.set(x,y,z);
+        for(let j=0;j<5;j++){
+          const puff=add(cloud,new THREE.SphereGeometry(.9+Math.random()*.7,16,12),cloudMat,[(Math.random()-.5)*1.9,(Math.random()-.5)*.65,(Math.random()-.5)*.6]);
+          puff.scale.y=.58;
+        }
+        cloud.userData.cloud=i;
+      }
+      // Tiny distant city grid below the clouds, fading into haze.
+      for(let i=0;i<48;i++){
+        const x=(Math.random()-.5)*26,z=-12-Math.random()*35,h=.3+Math.random()*2.2;
+        add(g,new THREE.BoxGeometry(.65,h,.65),buildingMats[i%4],[x,-5.2+h/2,z]);
+      }
+      // Skydiver with outstretched arms and trailing legs; parachute overhead.
+      const diver=new THREE.Group();g.add(diver);diver.position.set(0,1.1,2.2);diver.rotation.z=-.16;
+      const suit=new THREE.MeshStandardMaterial({color:0x24263c,roughness:.8});
+      add(diver,new THREE.CapsuleGeometry(.22,.95,5,10),suit,[0,0,0]).rotation.z=.15;
+      add(diver,new THREE.SphereGeometry(.22,18,18),skin,[0,.66,0]);
+      const armL=add(diver,new THREE.CylinderGeometry(.08,.1,1.15,10),suit,[-.7,.23,0]);armL.rotation.z=-1.12;
+      const armR=add(diver,new THREE.CylinderGeometry(.08,.1,1.15,10),suit,[.7,.23,0]);armR.rotation.z=1.12;
+      const legL=add(diver,new THREE.CylinderGeometry(.09,.12,.95,10),suit,[-.27,-.83,0]);legL.rotation.z=-.22;
+      const legR=add(diver,new THREE.CylinderGeometry(.09,.12,.95,10),suit,[.27,-.83,0]);legR.rotation.z=.22;
+      diver.userData.diver=true;
+      const canopy=add(g,new THREE.SphereGeometry(2.15,32,18,0,Math.PI*2,0,Math.PI*.55),pink,[0,5.0,1.8]);
+      canopy.scale.set(1.5,.78,.55);
+      for(let i=0;i<9;i++){
+        const line=add(g,new THREE.CylinderGeometry(.009,.009,3.4,5),lightMat,[(i-4)*.38,3.25,1.8]);
+        line.rotation.z=(i-4)*.13;
+      }
+    }
+
+    // Cinematic framing rings are neutral atmospheric elements, not extra subject scenes.
+    const halo=add(g,new THREE.TorusGeometry(7.2,.018,8,160),new THREE.MeshBasicMaterial({color:0xffb18e,transparent:true,opacity:.25}),[0,0,-5]);
+    halo.rotation.x=.3;
+    for(let i=0;i<38;i++){
+      const p=add(g,new THREE.SphereGeometry(.025+(i%4)*.012,8,8),i%3===0?peach:(i%3===1?pink:violet),
+        [(Math.random()-.5)*24,(Math.random()-.5)*14,(Math.random()-.5)*46]);
+      p.userData.phase=Math.random()*6.28;
+    }
+    return g;
+  };
+  makeChapter(0,0); makeChapter(-30,1); makeChapter(-58,2); makeChapter(-82,3); makeChapter(-108,4);
+
+  // Distant star field and drifting luminous dust.
+  const count=1800, positions=new Float32Array(count*3);
+  for(let i=0;i<count;i++){positions[i*3]=(Math.random()-.5)*100;positions[i*3+1]=(Math.random()-.5)*65;positions[i*3+2]=-Math.random()*145;}
+  const starGeo=new THREE.BufferGeometry();starGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffc4ad,size:.045,transparent:true,opacity:.7}));
+  scene.add(stars);
+
+  let target=0, smooth=0, pointerX=0, pointerY=0, px=0, py=0;
+  const maxScroll=()=>Math.max(1,document.documentElement.scrollHeight-innerHeight);
+  const onScroll=()=>{target=scrollY/maxScroll();const f=document.getElementById('journeyFill');if(f)f.style.width=(target*100)+'%';const label=document.getElementById('journeyChapter');if(label)label.textContent=target<.18?'THE CITY':target<.43?'THE RIDE':target<.72?'ABOVE THE CLOUDS':'THE JOURNEY';};
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  addEventListener('pointermove',e=>{pointerX=(e.clientX/innerWidth-.5)*.8;pointerY=(e.clientY/innerHeight-.5)*.5;},{passive:true});
+  addEventListener('orientationchange',()=>setTimeout(()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);},250));
+  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.65));});
+
+  const clock=new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    const t=clock.getElapsedTime();
+    smooth+=(target-smooth)*.035;
+    px+=(pointerX-px)*.025;py+=(pointerY-py)*.025;
+    // The camera travels through one continuous 3D world as the page scrolls.
+    const travel=smooth*112;
+    camera.position.z=18-travel;
+    camera.position.x=Math.sin(smooth*Math.PI*2)*1.35+px*2.2;
+    camera.position.y=Math.cos(smooth*Math.PI*2.2)*.7-py*1.5;
+    camera.rotation.x=py*.035+Math.sin(t*.16)*.012;
+    camera.rotation.y=-px*.05+Math.sin(smooth*Math.PI*2)*.025;
+    journey.position.x=Math.sin(t*.12)*.22;
+    journey.rotation.z=Math.sin(t*.1)*.018;
+    clusters.forEach((g,i)=>{
+      const local=t*(.12+i*.018);
+      g.rotation.y=Math.sin(local)*.09;
+      g.rotation.x=Math.cos(local*.7)*.035;
+      g.children.forEach(o=>{
+        if(o.userData.orbit!==undefined){const a=o.userData.orbit*Math.PI*2/9+t*.22;o.position.x=Math.cos(a)*5.6;o.position.y=Math.sin(a)*3.5;}
+        if(o.userData.phase!==undefined)o.position.y+=Math.sin(t*.55+o.userData.phase)*.0018;
+        if(o.userData.pulse!==undefined)o.scale.setScalar(1+Math.sin(t*2+o.userData.pulse)*.12);
+        if(o.userData.isScooter){o.position.x=Math.sin(t*.8)*.22;o.rotation.z=Math.sin(t*1.6)*.025;}
+        if(o.userData.diver){o.rotation.z=-.16+Math.sin(t*1.2)*.045;o.position.y=1.1+Math.sin(t*.8)*.18;}
+        if(o.userData.cloud!==undefined)o.position.x+=Math.sin(t*.16+o.userData.cloud)*.0015;
+        if(o.userData.streak!==undefined)o.position.z-=.035;
+      });
+    });
+    stars.rotation.y=t*.003+smooth*.12;stars.position.z=travel*.12;
+    peachLight.position.x=Math.sin(t*.35)*9;peachLight.position.y=4+Math.cos(t*.22)*2;
+    roseLight.position.x=Math.cos(t*.27)*8;roseLight.position.z=-12-travel*.3;
+    blueLight.position.y=5+Math.sin(t*.31)*3;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  // Add subtle scroll depth to content, tied to the same journey.
+  const sections=[...document.querySelectorAll('.section')];
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting)entry.target.classList.add('in-journey');
+    }),{threshold:.12});
+    sections.forEach(s=>observer.observe(s));
+  }
+})();
+</script>
+
+</body>
+</html>
